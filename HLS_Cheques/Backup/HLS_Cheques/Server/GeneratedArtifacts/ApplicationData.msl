@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="ApplicationDataObjectContext" StorageEntityContainer="ApplicationDataStore">
+    <EntitySetMapping Name="Cheques">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Cheque)">
+        <MappingFragment StoreEntitySet="Cheques">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Cheque_CuentaBanco" ColumnName="Cheque_CuentaBanco" />
+          <ScalarProperty Name="Nro" ColumnName="Nro" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="Cheque_Beneficiario" ColumnName="Cheque_Beneficiario" />
+          <ScalarProperty Name="Cheque_Cobrador" ColumnName="Cheque_Cobrador" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Cheque_Girador" ColumnName="Cheque_Girador" />
+          <ScalarProperty Name="FechaGiro" ColumnName="FechaGiro" />
+          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+          <ScalarProperty Name="ComprobanteNro" ColumnName="ComprobanteNro" />
+          <ScalarProperty Name="ImgCheque" ColumnName="ImgCheque" />
+          <ScalarProperty Name="ImgFactura" ColumnName="ImgFactura" />
+          <ScalarProperty Name="ImgComprobante" ColumnName="ImgComprobante" />
+          <ScalarProperty Name="ImgDocRespaldo" ColumnName="ImgDocRespaldo" />
+          <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+          <ScalarProperty Name="Solicitar" ColumnName="Solicitar" />
+          <ScalarProperty Name="SolicitudNro" ColumnName="SolicitudNro" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioAprobacion" ColumnName="UsuarioAprobacion" />
+          <ScalarProperty Name="FechaAprobación" ColumnName="FechaAprobación" />
+          <ScalarProperty Name="UsuarioSolicitud" ColumnName="UsuarioSolicitud" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="UsuarioEmision" ColumnName="UsuarioEmision" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="UsuarioPago" ColumnName="UsuarioPago" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="UsuarioAnulacion" ColumnName="UsuarioAnulacion" />
+          <ScalarProperty Name="FechaAnulación" ColumnName="FechaAnulación" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuentaBancos">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.CuentaBanco)">
+        <MappingFragment StoreEntitySet="CuentaBancos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="CuentaBanco_Banco" ColumnName="CuentaBanco_Banco" />
+          <ScalarProperty Name="CuentaNro" ColumnName="CuentaNro" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Beneficiarios">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Beneficiario)">
+        <MappingFragment StoreEntitySet="Beneficiarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cobradors">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Cobrador)">
+        <MappingFragment StoreEntitySet="Cobradors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Email)">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="RolMail" ColumnName="RolMail" />
+          <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bancos">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Banco)">
+        <MappingFragment StoreEntitySet="Bancos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Giradors">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Girador)">
+        <MappingFragment StoreEntitySet="Giradors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SendMails">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.SendMail)">
+        <MappingFragment StoreEntitySet="SendMails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="RolMail" ColumnName="RolMail" />
+          <ScalarProperty Name="MailTo" ColumnName="MailTo" />
+          <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Secuencias">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Secuencia)">
+        <MappingFragment StoreEntitySet="Secuencias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Catagoria" ColumnName="Catagoria" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="NroActual" ColumnName="NroActual" />
+          <ScalarProperty Name="NroInicial" ColumnName="NroInicial" />
+          <ScalarProperty Name="NroFinal" ColumnName="NroFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Log)">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Objeto" ColumnName="Objeto" />
+          <ScalarProperty Name="Metodo" ColumnName="Metodo" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperacionEMails">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.OperacionEMail)">
+        <MappingFragment StoreEntitySet="OperacionEMails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Enviante" ColumnName="Enviante" />
+          <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="InfoAdjunta" ColumnName="InfoAdjunta" />
+          <ScalarProperty Name="NombreArchivoAdjunto" ColumnName="NombreArchivoAdjunto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parametros">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Parametro)">
+        <MappingFragment StoreEntitySet="Parametros">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

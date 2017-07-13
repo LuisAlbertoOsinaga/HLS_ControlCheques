@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="Cheques" EntityType="ApplicationDataStore.Cheque" store:Type="Tables" Schema="dbo" Table="Cheques" />
+    <EntitySet Name="CuentaBancos" EntityType="ApplicationDataStore.CuentaBanco" store:Type="Tables" Schema="dbo" Table="CuentaBancos" />
+    <EntitySet Name="Beneficiarios" EntityType="ApplicationDataStore.Beneficiario" store:Type="Tables" Schema="dbo" Table="Beneficiarios" />
+    <EntitySet Name="Cobradors" EntityType="ApplicationDataStore.Cobrador" store:Type="Tables" Schema="dbo" Table="Cobradors" />
+    <EntitySet Name="Emails" EntityType="ApplicationDataStore.Email" store:Type="Tables" Schema="dbo" Table="Emails" />
+    <EntitySet Name="Bancos" EntityType="ApplicationDataStore.Banco" store:Type="Tables" Schema="dbo" Table="Bancos" />
+    <EntitySet Name="Giradors" EntityType="ApplicationDataStore.Girador" store:Type="Tables" Schema="dbo" Table="Giradors" />
+    <EntitySet Name="SendMails" EntityType="ApplicationDataStore.SendMail" store:Type="Tables" Schema="dbo" Table="SendMails" />
+    <EntitySet Name="Secuencias" EntityType="ApplicationDataStore.Secuencia" store:Type="Tables" Schema="dbo" Table="Secuencias" />
+    <EntitySet Name="Logs" EntityType="ApplicationDataStore.Log" store:Type="Tables" Schema="dbo" Table="Logs" />
+    <EntitySet Name="OperacionEMails" EntityType="ApplicationDataStore.OperacionEMail" store:Type="Tables" Schema="dbo" Table="OperacionEMails" />
+    <EntitySet Name="Parametros" EntityType="ApplicationDataStore.Parametro" store:Type="Tables" Schema="dbo" Table="Parametros" />
+    <AssociationSet Name="Cheque_CuentaBanco" Association="ApplicationDataStore.Cheque_CuentaBanco">
+      <End Role="CuentaBanco" EntitySet="CuentaBancos" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Beneficiario" Association="ApplicationDataStore.Cheque_Beneficiario">
+      <End Role="Beneficiario" EntitySet="Beneficiarios" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Cobrador" Association="ApplicationDataStore.Cheque_Cobrador">
+      <End Role="Cobrador" EntitySet="Cobradors" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="CuentaBanco_Banco" Association="ApplicationDataStore.CuentaBanco_Banco">
+      <End Role="Banco" EntitySet="Bancos" />
+      <End Role="CuentaBanco" EntitySet="CuentaBancos" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Girador" Association="ApplicationDataStore.Cheque_Girador">
+      <End Role="Girador" EntitySet="Giradors" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cheque">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Nro" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Concepto" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Monto" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FechaGiro" Type="datetime" />
+    <Property Name="Certificado" Type="bit" />
+    <Property Name="ComprobanteNro" Type="nvarchar" MaxLength="255" />
+    <Property Name="ImgCheque" Type="varbinary(max)" />
+    <Property Name="ImgFactura" Type="varbinary(max)" />
+    <Property Name="ImgComprobante" Type="varbinary(max)" />
+    <Property Name="ImgDocRespaldo" Type="varbinary(max)" />
+    <Property Name="Situacion" Type="nvarchar" MaxLength="1" />
+    <Property Name="Solicitar" Type="bit" />
+    <Property Name="SolicitudNro" Type="int" />
+    <Property Name="Observacion" Type="nvarchar" MaxLength="255" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioAprobacion" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaAprobación" Type="datetime" />
+    <Property Name="UsuarioSolicitud" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaSolicitud" Type="datetime" />
+    <Property Name="UsuarioEmision" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaEmision" Type="datetime" />
+    <Property Name="UsuarioPago" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaPago" Type="datetime" />
+    <Property Name="UsuarioAnulacion" Type="nvarchar" MaxLength="255" />
+    <Property Name="FechaAnulación" Type="datetime" />
+    <Property Name="Cheque_CuentaBanco" Type="int" Nullable="false" />
+    <Property Name="Cheque_Beneficiario" Type="int" Nullable="false" />
+    <Property Name="Cheque_Cobrador" Type="int" />
+    <Property Name="Cheque_Girador" Type="int" />
+  </EntityType>
+  <EntityType Name="CuentaBanco">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="CuentaNro" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Moneda" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CuentaBanco_Banco" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Beneficiario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Cobrador">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="RolMail" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Destinatario" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Mail" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Sigla" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Girador">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SendMail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="RolMail" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="MailTo" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="MailFrom" Type="nvarchar" MaxLength="255" />
+    <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Body" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Codigo" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Secuencia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Catagoria" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="NroActual" Type="int" Nullable="false" />
+    <Property Name="NroInicial" Type="int" />
+    <Property Name="NroFinal" Type="int" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Objeto" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Metodo" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OperacionEMail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Enviante" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Destinatario" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Asunto" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Cuerpo" Type="nvarchar" Nullable="false" MaxLength="4000" />
+    <Property Name="InfoAdjunta" Type="varbinary(max)" />
+    <Property Name="NombreArchivoAdjunto" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Categoria" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Valor" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <Association Name="Cheque_CuentaBanco">
+    <End Role="CuentaBanco" Type="ApplicationDataStore.CuentaBanco" Multiplicity="1" />
+    <End Role="Cheque" Type="ApplicationDataStore.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuentaBanco">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_CuentaBanco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Beneficiario">
+    <End Role="Beneficiario" Type="ApplicationDataStore.Beneficiario" Multiplicity="1" />
+    <End Role="Cheque" Type="ApplicationDataStore.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficiario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Beneficiario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Cobrador">
+    <End Role="Cobrador" Type="ApplicationDataStore.Cobrador" Multiplicity="0..1" />
+    <End Role="Cheque" Type="ApplicationDataStore.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cobrador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Cobrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CuentaBanco_Banco">
+    <End Role="Banco" Type="ApplicationDataStore.Banco" Multiplicity="1" />
+    <End Role="CuentaBanco" Type="ApplicationDataStore.CuentaBanco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banco">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CuentaBanco">
+        <PropertyRef Name="CuentaBanco_Banco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Girador">
+    <End Role="Girador" Type="ApplicationDataStore.Girador" Multiplicity="0..1" />
+    <End Role="Cheque" Type="ApplicationDataStore.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Girador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Girador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

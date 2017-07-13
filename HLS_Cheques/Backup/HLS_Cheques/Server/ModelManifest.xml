@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\Work\HLS_ControlCheques\HLS_Cheques\HLS_Cheques\Common\Properties\Common.lsml" Checksum="D7F2211F12A33BE3FDE42E4E385AFEEDA617F816770DDBCA8625A57544244902" />
+    <Document FullPath="C:\Work\HLS_ControlCheques\HLS_Cheques\HLS_Cheques\Server\Properties\Service.lsml" Checksum="11D919C5628D2EED98AA22F39B4814B18B27D9B53F6885330C8D1E21151EE23C" />
+  </Documents>
+</ModelDocumentManifest>

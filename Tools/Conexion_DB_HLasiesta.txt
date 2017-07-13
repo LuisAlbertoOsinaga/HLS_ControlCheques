@@ -1,0 +1,3 @@
+Data Source=tcp:s06.winhost.com;Initial Catalog=DB_44798_siesta;Integrated Security=False;User ID=DB_44798_siesta_user;Password=arquimedes
+
+Data Source=tcp:s06.winhost.com;Initial Catalog=DB_44798_siesta;Integrated Security=False;User ID=DB_44798_siesta_user;Password=arquimedes;Connection Timeout=180

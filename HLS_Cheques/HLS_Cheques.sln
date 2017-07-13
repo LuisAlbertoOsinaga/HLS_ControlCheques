@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{ECD6D718-D1CF-4119-97F3-97C25A0DFBF9}") = "HLS_Cheques", "HLS_Cheques\HLS_Cheques.lsproj", "{05106B23-750B-42D6-BB8E-DD7FFF27967D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05106B23-750B-42D6-BB8E-DD7FFF27967D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05106B23-750B-42D6-BB8E-DD7FFF27967D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05106B23-750B-42D6-BB8E-DD7FFF27967D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05106B23-750B-42D6-BB8E-DD7FFF27967D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55DCB92A-FDAF-4917-97AD-FB5195F3818F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DCB92A-FDAF-4917-97AD-FB5195F3818F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DCB92A-FDAF-4917-97AD-FB5195F3818F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DCB92A-FDAF-4917-97AD-FB5195F3818F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6D20EF-3EA5-4DD1-9B13-7922EF6B1365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6D20EF-3EA5-4DD1-9B13-7922EF6B1365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6D20EF-3EA5-4DD1-9B13-7922EF6B1365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6D20EF-3EA5-4DD1-9B13-7922EF6B1365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD135ED4-FE6C-44F3-ADBB-614A40A16723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD135ED4-FE6C-44F3-ADBB-614A40A16723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD135ED4-FE6C-44F3-ADBB-614A40A16723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD135ED4-FE6C-44F3-ADBB-614A40A16723}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

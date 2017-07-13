@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Cheque">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Nro" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Concepto" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Monto" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FechaGiro" Type="Edm.DateTime" />
+    <Property Name="Certificado" Type="Edm.Boolean" />
+    <Property Name="ComprobanteNro" Type="Edm.String" MaxLength="255" />
+    <Property Name="ImgCheque" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="ImgFactura" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="ImgComprobante" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="ImgDocRespaldo" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="Situacion" Type="Edm.String" MaxLength="1" />
+    <Property Name="Solicitar" Type="Edm.Boolean" />
+    <Property Name="SolicitudNro" Type="Edm.Int32" />
+    <Property Name="Observacion" Type="Edm.String" MaxLength="255" />
+    <Property Name="UsuarioCreacion" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaCreacion" Type="Edm.DateTime" />
+    <Property Name="UsuarioAprobacion" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaAprobación" Type="Edm.DateTime" />
+    <Property Name="UsuarioSolicitud" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaSolicitud" Type="Edm.DateTime" />
+    <Property Name="UsuarioEmision" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaEmision" Type="Edm.DateTime" />
+    <Property Name="UsuarioPago" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaPago" Type="Edm.DateTime" />
+    <Property Name="UsuarioAnulacion" Type="Edm.String" MaxLength="255" />
+    <Property Name="FechaAnulación" Type="Edm.DateTime" />
+    <Property Name="Cheque_CuentaBanco" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Cheque_Beneficiario" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Cheque_Cobrador" Type="Edm.Int32" />
+    <Property Name="Cheque_Girador" Type="Edm.Int32" />
+    <NavigationProperty Name="CuentaBanco" Relationship="LightSwitchApplication.Cheque_CuentaBanco" ToRole="CuentaBanco" FromRole="Cheque" />
+    <NavigationProperty Name="Beneficiario" Relationship="LightSwitchApplication.Cheque_Beneficiario" ToRole="Beneficiario" FromRole="Cheque" />
+    <NavigationProperty Name="Cobrador" Relationship="LightSwitchApplication.Cheque_Cobrador" ToRole="Cobrador" FromRole="Cheque" />
+    <NavigationProperty Name="Girador" Relationship="LightSwitchApplication.Cheque_Girador" ToRole="Girador" FromRole="Cheque" />
+  </EntityType>
+  <EntityType Name="CuentaBanco">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CuentaNro" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Moneda" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CuentaBanco_Banco" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Banco" Relationship="LightSwitchApplication.CuentaBanco_Banco" ToRole="Banco" FromRole="CuentaBanco" />
+    <NavigationProperty Name="Cheques" Relationship="LightSwitchApplication.Cheque_CuentaBanco" ToRole="Cheque" FromRole="CuentaBanco" />
+  </EntityType>
+  <EntityType Name="Beneficiario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Cheques" Relationship="LightSwitchApplication.Cheque_Beneficiario" ToRole="Cheque" FromRole="Beneficiario" />
+  </EntityType>
+  <EntityType Name="Cobrador">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Cheques" Relationship="LightSwitchApplication.Cheque_Cobrador" ToRole="Cheque" FromRole="Cobrador" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="RolMail" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Destinatario" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Mail" Type="Edm.String" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Banco">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Sigla" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="CuentaBancos" Relationship="LightSwitchApplication.CuentaBanco_Banco" ToRole="CuentaBanco" FromRole="Banco" />
+  </EntityType>
+  <EntityType Name="Girador">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Cheques" Relationship="LightSwitchApplication.Cheque_Girador" ToRole="Cheque" FromRole="Girador" />
+  </EntityType>
+  <EntityType Name="SendMail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Fecha" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="RolMail" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="MailTo" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="MailFrom" Type="Edm.String" MaxLength="255" />
+    <Property Name="Subject" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Body" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Codigo" Type="Edm.String" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Secuencia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Catagoria" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Clave" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="NroActual" Type="Edm.Int32" Nullable="false" />
+    <Property Name="NroInicial" Type="Edm.Int32" />
+    <Property Name="NroFinal" Type="Edm.Int32" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Fecha" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="Usuario" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Objeto" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Metodo" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Detalle" Type="Edm.String" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OperacionEMail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Enviante" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Destinatario" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Asunto" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Cuerpo" Type="Edm.String" Nullable="false" MaxLength="4000" />
+    <Property Name="InfoAdjunta" Type="Edm.Binary" MaxLength="Max" />
+    <Property Name="NombreArchivoAdjunto" Type="Edm.String" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Categoria" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Clave" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Valor" Type="Edm.String" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <Association Name="Cheque_CuentaBanco">
+    <End Role="CuentaBanco" Type="LightSwitchApplication.CuentaBanco" Multiplicity="1" />
+    <End Role="Cheque" Type="LightSwitchApplication.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuentaBanco">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_CuentaBanco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Beneficiario">
+    <End Role="Beneficiario" Type="LightSwitchApplication.Beneficiario" Multiplicity="1" />
+    <End Role="Cheque" Type="LightSwitchApplication.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficiario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Beneficiario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Cobrador">
+    <End Role="Cobrador" Type="LightSwitchApplication.Cobrador" Multiplicity="0..1" />
+    <End Role="Cheque" Type="LightSwitchApplication.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cobrador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Cobrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CuentaBanco_Banco">
+    <End Role="Banco" Type="LightSwitchApplication.Banco" Multiplicity="1" />
+    <End Role="CuentaBanco" Type="LightSwitchApplication.CuentaBanco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banco">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CuentaBanco">
+        <PropertyRef Name="CuentaBanco_Banco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cheque_Girador">
+    <End Role="Girador" Type="LightSwitchApplication.Girador" Multiplicity="0..1" />
+    <End Role="Cheque" Type="LightSwitchApplication.Cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Girador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cheque">
+        <PropertyRef Name="Cheque_Girador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationDataObjectContext" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="Cheques" EntityType="LightSwitchApplication.Cheque" />
+    <EntitySet Name="CuentaBancos" EntityType="LightSwitchApplication.CuentaBanco" />
+    <EntitySet Name="Beneficiarios" EntityType="LightSwitchApplication.Beneficiario" />
+    <EntitySet Name="Cobradors" EntityType="LightSwitchApplication.Cobrador" />
+    <EntitySet Name="Emails" EntityType="LightSwitchApplication.Email" />
+    <EntitySet Name="Bancos" EntityType="LightSwitchApplication.Banco" />
+    <EntitySet Name="Giradors" EntityType="LightSwitchApplication.Girador" />
+    <EntitySet Name="SendMails" EntityType="LightSwitchApplication.SendMail" />
+    <EntitySet Name="Secuencias" EntityType="LightSwitchApplication.Secuencia" />
+    <EntitySet Name="Logs" EntityType="LightSwitchApplication.Log" />
+    <EntitySet Name="OperacionEMails" EntityType="LightSwitchApplication.OperacionEMail" />
+    <EntitySet Name="Parametros" EntityType="LightSwitchApplication.Parametro" />
+    <AssociationSet Name="Cheque_CuentaBanco" Association="LightSwitchApplication.Cheque_CuentaBanco">
+      <End Role="CuentaBanco" EntitySet="CuentaBancos" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Beneficiario" Association="LightSwitchApplication.Cheque_Beneficiario">
+      <End Role="Beneficiario" EntitySet="Beneficiarios" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Cobrador" Association="LightSwitchApplication.Cheque_Cobrador">
+      <End Role="Cobrador" EntitySet="Cobradors" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+    <AssociationSet Name="CuentaBanco_Banco" Association="LightSwitchApplication.CuentaBanco_Banco">
+      <End Role="Banco" EntitySet="Bancos" />
+      <End Role="CuentaBanco" EntitySet="CuentaBancos" />
+    </AssociationSet>
+    <AssociationSet Name="Cheque_Girador" Association="LightSwitchApplication.Cheque_Girador">
+      <End Role="Girador" EntitySet="Giradors" />
+      <End Role="Cheque" EntitySet="Cheques" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
